@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Experiences — yovel</title>
+  <link rel="icon" type="image/png" href="icons/experiences.png" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    /* 🌙 DARK MODE DEFAULT */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f0f1a, #121212);
+      color: #f5f5f5;
+      overflow-x: hidden;
+    }
+
+    body.light {
+      background: linear-gradient(135deg, #f7f7ff, #ffffff);
+      color: #111;
+    }
+
+    /* NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      backdrop-filter: blur(15px);
+      background: rgba(0,0,0,0.4);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    body.light header {
+      background: rgba(255,255,255,0.6);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    header div {
+      font-weight: 800;
+      font-size: 1.3rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #c77dff;
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .toggle-btn {
+      font-size: 20px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    /* MOBILE MENU */
+    .hamburger {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      padding: 1rem;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(10px);
+      gap: 1rem;
+    }
+
+    body.light .mobile-menu {
+      background: rgba(255,255,255,0.9);
+    }
+
+    .mobile-menu a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: bold;
+    }
+
+    /* MAIN */
+    .main-content {
+      max-width: 1100px;
+      padding: 3rem 2rem;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .description {
+      opacity: 0.85;
+      margin-bottom: 3rem;
+      max-width: 850px;
+      line-height: 1.6;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    /* GLASS CARD */
+    .card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      padding: 1.5rem;
+
+      transform: translateY(40px);
+      opacity: 0;
+    }
+
+    body.light .card {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .card.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      color: #c77dff;
+    }
+
+    body.light .card h2 {
+      color: #6a0dad;
+    }
+
+    .card ul {
+      margin-top: 0.6rem;
+      padding-left: 1.2rem;
+      opacity: 0.85;
+    }
+
+    .footer-text {
+      margin-top: 4rem;
+      text-align: center;
+      opacity: 0.7;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div>yovel’s portfolio</div>
+
+    <nav>
+      <a href="index.html">home</a>
+      <a href="experiences.html">experiences</a>
+      <a href="info.html">info</a>
+
+      <button class="toggle-btn" onclick="toggleMode()" id="modeBtn">🌙</button>
+    </nav>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">home</a>
+      <a href="experiences.html">experiences</a>
+      <a href="info.html">info</a>
+
+      <button class="toggle-btn" onclick="toggleMode()" id="modeBtnMobile">🌙</button>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <h1>My Experiences</h1>
+
+    <p class="description">
+      I have experience in graphic design, leadership, and digital projects over multiple years.
+    </p>
+
+    <div class="cards">
+
+      <a class="card" href="https://notexmc.vercel.app/" target="_blank">
+        <img src="icons/notex.jpg">
+        <h2>Notex Network</h2>
+        <ul><li>Head Designer</li></ul>
+      </a>
+
+      <a class="card" href="https://www.hyperlandsmc.net/" target="_blank">
+        <img src="icons/hyperlands.jpg">
+        <h2>Hyperlands MC</h2>
+        <ul><li>Designer</li></ul>
+      </a>
+
+      <a class="card" href="https://instagram.com/ic_bishnu" target="_blank">
+        <img src="icons/rotary.jpg">
+        <h2>Interact Club of Bishnu Memorial</h2>
+        <ul><li>IT Head (RY 2023-2025)</li></ul>
+      </a>
+
+      <a class="card" href="https://www.instagram.com/zone1_interactdistrict3292" target="_blank">
+        <img src="icons/theme.png">
+        <h2>Zone 1 Interact District 3292</h2>
+        <ul><li>Zonal IT Head (RY 2025-2026)</li></ul>
+      </a>
+
+    </div>
+
+    <p class="footer-text">Feel free to contact me for collaborations.</p>
+
+  </main>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("light");
+
+      const isLight = document.body.classList.contains("light");
+
+      document.getElementById("modeBtn").textContent = isLight ? "☀️" : "🌙";
+      document.getElementById("modeBtnMobile").textContent = isLight ? "☀️" : "🌙";
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+
+    const cards = document.querySelectorAll(".card");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(c => observer.observe(c));
+  </script>
+
+</body>
+</html>
